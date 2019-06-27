@@ -100,7 +100,7 @@ $(function() {
 		$(this).attr("class", "redhover");
 		$(".type-list li a").each(function() {
 			$(".type-list li a").not(".redhover").attr("class", "grayhover");
-		})
+		});
 		$(this).removeClass(".redhover");
 		alert(RetSelecteds());
 	})
@@ -131,7 +131,7 @@ var getyxl = jQuery('#picLBxxl li').eq(0).width();  /*获取li的宽度*/
 (function($){
     var arartta= window['arartta'] = function(o){
         return new das(o);
-    }
+    };
     das = function(o){
         this.obj = $('#'+o.obj);
         this.bnt = $('#'+o.bnt);
@@ -139,7 +139,7 @@ var getyxl = jQuery('#picLBxxl li').eq(0).width();  /*获取li的宽度*/
         this.current = 0;
         this.myTimersc = '';
         this.init()
-    }
+    };
     das.prototype = {
         chgPic:function(n){
             var _this = this;
@@ -177,14 +177,14 @@ var getyxl = jQuery('#picLBxxl li').eq(0).width();  /*获取li的宽度*/
                 _this.chgPic(_this.current);
                 _this.rotate();
 
-            })
+            });
             this.bnt.mouseenter(function () {
                 _this.rotate();
             });
 
         }
     }
-})(jQuery)
+})(jQuery);
 
 arartta({
     bnt:'xxlChg',

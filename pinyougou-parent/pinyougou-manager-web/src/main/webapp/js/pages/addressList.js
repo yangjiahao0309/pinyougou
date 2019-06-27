@@ -22,13 +22,13 @@ $(function(){
 			currentProvince = $(this).val();
 			initSelector($selectorCity,getCities(currentProvince));
 			$selectorCity.trigger('change');
-		})
+		});
 
 		// 选择城市
 		$selectorCity.change(function(){
 			currentCity = $(this).val();
 			initSelector($selectorDistrict,getDistricts(currentProvince,currentCity));
-		})
+		});
 
 		// 初始化选择框 其中 data 表示包含所有选择项的数组
 		function initSelector(selectObj,data){
@@ -52,4 +52,4 @@ $(function(){
 			}
 			selectObj.html(str);
 		}
-})
+});

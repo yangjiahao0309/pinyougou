@@ -9,7 +9,7 @@ var uploadPreview = function(setting) {
             return true;
         }
         return false;
-    }
+    };
 
     _self.DefautlSetting = {
         UpBtn: "",
@@ -43,7 +43,7 @@ var uploadPreview = function(setting) {
             url = window.webkitURL.createObjectURL(file);
         }
         return url;
-    }
+    };
 
     _self.Bind = function() {
 
@@ -76,10 +76,10 @@ var uploadPreview = function(setting) {
 				}
 	
         }
-    }
+    };
 
     _self.Bind();
-}
+};
 
 
 

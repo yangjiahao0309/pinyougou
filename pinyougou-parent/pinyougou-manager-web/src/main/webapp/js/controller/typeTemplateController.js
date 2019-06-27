@@ -10,7 +10,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.list=response;
 			}			
 		);
-	}    
+	};
 	
 	//分页
 	$scope.findPage=function(page,rows){			
@@ -20,7 +20,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}			
 		);
-	}
+	};
 	
 	//查询实体 
 	$scope.findOne=function(id){				
@@ -32,7 +32,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.entity.customAttributeItems= JSON.parse($scope.entity.customAttributeItems);//转换扩展属性
 			}
 		);				
-	}
+	};
 	
 	//保存 
 	$scope.save=function(){				
@@ -52,7 +52,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				}
 			}		
 		);				
-	}
+	};
 	
 	 
 	//批量删除 
@@ -66,7 +66,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				}						
 			}		
 		);				
-	}
+	};
 	
 	$scope.searchEntity={};//定义搜索对象 
 	
@@ -78,7 +78,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}			
 		);
-	}
+	};
 
 	//品牌列表
 	$scope.brandList={data:[]};
@@ -90,7 +90,7 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.brandList={data:response};
 			}
 		)
-	}
+	};
 
 	//规格列表
 	$scope.specificationList={data:[]};
@@ -102,12 +102,12 @@ app.controller('typeTemplateController' ,function($scope,$controller ,typeTempla
 				$scope.specificationList={data:response};
 			}
 		);
-	}
+	};
 
 	//增加属性行
 	$scope.addTableRow = function () {
 		$scope.entity.customAttributeItems.push({});
-	}
+	};
 
 	//（根据索引从集合）删除属性行
 	$scope.deleteTableRow = function (index) {

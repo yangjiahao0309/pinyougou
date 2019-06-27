@@ -24,7 +24,7 @@ $(function () {
     if (lileg < 8) {
         $("#li-1").css({"display":"none"});
     }
-})
+});
 
 $(document).ready(function () {
     //    nav-li hover e
@@ -64,7 +64,7 @@ $(function () {
             $("#headnav-fixed").css({ "position": "static","border-bottom":0});
         }
     })
-})
+});
 
 
 

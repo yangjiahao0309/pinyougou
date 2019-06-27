@@ -29,7 +29,7 @@ $(function () {
 //        }
 //    })
 
-})
+});
 //go to top
 $(document).ready(function ($) {
     var offset = 300,

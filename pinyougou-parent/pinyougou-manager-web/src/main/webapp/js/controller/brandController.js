@@ -10,7 +10,7 @@ app.controller('brandController' ,function($scope,$controller ,brandService){
 				$scope.list=response;
 			}			
 		);
-	}    
+	};
 	
 	//分页
 	$scope.findPage=function(page,size){
@@ -20,7 +20,7 @@ app.controller('brandController' ,function($scope,$controller ,brandService){
 				$scope.paginationConf.totalItems=response.total;//更新总记录数
 			}			
 		);
-	}
+	};
 
 	
 	//查询实体 
@@ -30,7 +30,7 @@ app.controller('brandController' ,function($scope,$controller ,brandService){
 				$scope.entity= response;					
 			}
 		);				
-	}
+	};
 	
 	//保存 
 	$scope.save=function(){				
@@ -50,7 +50,7 @@ app.controller('brandController' ,function($scope,$controller ,brandService){
 				}
 			}		
 		);				
-	}
+	};
 	
 	 
 	//批量删除 
@@ -66,7 +66,7 @@ app.controller('brandController' ,function($scope,$controller ,brandService){
 				}
 			);
 		}
-	}
+	};
 	
 	$scope.searchEntity={};//定义搜索对象 
 	

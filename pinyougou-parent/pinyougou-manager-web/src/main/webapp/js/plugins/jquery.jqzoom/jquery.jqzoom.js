@@ -190,7 +190,7 @@
 })(jQuery);
 
 function MouseEvent(e) {
-this.x = e.pageX
+this.x = e.pageX;
 this.y = e.pageY
 
 

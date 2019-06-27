@@ -30,7 +30,7 @@ angular.module('pagination', []).directive('tmPagination',[function(){
             // 变更当前页
             scope.changeCurrentPage = function(item) {
                 if(item == '...'){
-                    return;
+
                 }else{
                     scope.conf.currentPage = item;
                 }
