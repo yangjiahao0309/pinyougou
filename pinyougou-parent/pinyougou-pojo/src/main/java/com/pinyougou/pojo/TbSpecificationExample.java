@@ -53,7 +53,7 @@ public class TbSpecificationExample {
     }
 
     protected Criteria createCriteriaInternal() {
-        Criteria criteria = new Criteria();
+        Criteria criteria =new Criteria();
         return criteria;
     }
 

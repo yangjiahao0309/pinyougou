@@ -1,6 +1,7 @@
 package com.pinyougou.manager.controller;
 import java.util.List;
 
+import com.pinyougou.pojogroup.Type;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import com.pinyougou.sellergoods.service.ItemCatService;
 import entity.PageResult;
 import entity.Result;
 /**
+ * 商品分类
  * controller
  * @author Administrator
  *
@@ -43,13 +45,18 @@ public class ItemCatController {
 	
 	/**
 	 * 增加
-	 * @param itemCat
+	 * @param type
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody TbItemCat itemCat){
+	public Result add(@RequestBody Type type){
+		TbItemCat tbItemCat = new TbItemCat();
+		tbItemCat.setId(type.getId());
+		tbItemCat.setName(type.getName());
+		tbItemCat.setParentId(type.getParentId());
+		tbItemCat.setTypeId(type.getTypeTemplate().getId());
 		try {
-			itemCatService.add(itemCat);
+			itemCatService.add(tbItemCat);
 			return new Result(true, "增加成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -109,6 +116,16 @@ public class ItemCatController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbItemCat itemCat, int page, int rows  ){
 		return itemCatService.findPage(itemCat, page, rows);		
+	}
+
+	/**
+	 * 根据id返回下级列表
+	 * @param parentId
+	 * @return
+	 */
+	@RequestMapping("/findByParentId")
+	public List<TbItemCat> findByParentId(Long parentId){
+		return itemCatService.findByParentId(parentId);
 	}
 	
 }
