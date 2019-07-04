@@ -45,16 +45,12 @@ public class ItemCatController {
 	
 	/**
 	 * 增加
-	 * @param type
+	 * @param tbItemCat
 	 * @return
 	 */
 	@RequestMapping("/add")
-	public Result add(@RequestBody Type type){
-		TbItemCat tbItemCat = new TbItemCat();
-		tbItemCat.setId(type.getId());
-		tbItemCat.setName(type.getName());
-		tbItemCat.setParentId(type.getParentId());
-		tbItemCat.setTypeId(type.getTypeTemplate().getId());
+	public Result add(@RequestBody TbItemCat tbItemCat){
+
 		try {
 			itemCatService.add(tbItemCat);
 			return new Result(true, "增加成功");

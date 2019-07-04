@@ -39,4 +39,9 @@ app.service('typeTemplateService',function($http){
 	this.findSpecList=function (id) {
 		return $http.get('../typeTemplate/findSpecList.do?id='+id);
 	}
+
+	//分类管理 修改 查询模板回显
+	this.findOneOption=function(id){
+		return $http.get("../typeTemplate/findOneOption.do?id="+id);
+	}
 });

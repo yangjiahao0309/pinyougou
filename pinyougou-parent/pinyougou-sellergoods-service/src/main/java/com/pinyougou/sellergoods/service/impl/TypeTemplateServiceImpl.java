@@ -152,4 +152,10 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		return list;
 	}
 
+	@Override
+	public Map findOneOption(Long id) {
+		return typeTemplateMapper.findOneOption(id);
+	}
+
+
 }

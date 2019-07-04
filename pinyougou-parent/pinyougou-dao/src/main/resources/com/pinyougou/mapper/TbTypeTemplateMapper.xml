@@ -212,4 +212,8 @@
   <select id="selectOptionList" resultType="java.util.Map">
   select id,name as text from tb_type_template
   </select>
+
+  <select id="findOneOption" parameterType="long" resultType="map">
+    SELECT id,name text FROM tb_type_template where id = #{id}
+  </select>
 </mapper>

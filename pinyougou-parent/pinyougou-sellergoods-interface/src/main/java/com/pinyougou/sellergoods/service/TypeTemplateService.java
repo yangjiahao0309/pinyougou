@@ -72,5 +72,7 @@ public interface TypeTemplateService {
 	 * @return
 	 */
 	public List<Map> findSpecList(Long id);
+
+	public Map findOneOption(Long id);
 	
 }

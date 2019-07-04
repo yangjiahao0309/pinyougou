@@ -23,21 +23,32 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 	};
 	
 	//查询实体 
-	$scope.findOne=function(id){				
+	$scope.findOne=function(id){
+		//根据分类ID查询分类信息
 		itemCatService.findOne(id).success(
 			function(response){
-				$scope.entity= response;					
+				$scope.entity= response;
+				//根据分类中的模板ID，查询模板数据：{id:1,text:"手机"}
+				typeTemplateService.findOneOption($scope.entity.typeId).success(function(data){
+					$scope.entity.typeTemplateJSON=data;
+				});
 			}
 		);				
 	};
 	
 	//保存 
-	$scope.save=function(){				
+	$scope.save=function(){
+
+		//绑定parentID
+		$scope.entity.parentId = $scope.parentId;
+
+		//绑定模板ID
+		$scope.entity.typeId = $scope.entity.typeTemplateJSON.id;
+
 		var serviceObject;//服务层对象  				
 		if($scope.entity.id!=null){//如果有ID
 			serviceObject=itemCatService.update( $scope.entity ); //修改  
 		}else{
-			$scope.entity.parentId=$scope.parentId; //添加前将上级id设置到entity中
 
 			serviceObject=itemCatService.add( $scope.entity  );//增加 
 		}				
@@ -53,7 +64,22 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 			}		
 		);				
 	};
-	
+
+	//判断当前分类下时候存在子分类
+	$scope.checkIsParent=function($event,id){
+		itemCatService.findByParentId(id).success(function (data) {
+			//如果data不为空，代表当有下级分类
+			if(data!=null && data.length>0){
+				//将id从selectIds删除
+				var index = $scope.selectIds.indexOf(id);
+				$scope.selectIds.splice(index,1);
+				alert("当前分类存在下级分类，不能删除");
+				//将checkbox取消选中
+				$event.target.checked=false;
+				return;
+			}
+		});
+	}
 	 
 	//批量删除 
 	$scope.dele=function(){
@@ -61,8 +87,8 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 		itemCatService.dele( $scope.selectIds ).success(
 			function(response){
 				if(response.success){
-					$scope.reloadList();//刷新列表
-					$scope.selectIds=[];
+					$scope.findByParentId($scope.parentId);//刷新列表
+					$scope.selectIds = [];
 				}
 			}
 		);
@@ -97,6 +123,8 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 
 	//面包屑列表
 	$scope.grade=1; //设置等级
+
+
 	//设置等级方法
 	$scope.setGrade=function (value) {
 		$scope.grade=value;
@@ -107,13 +135,16 @@ app.controller('itemCatController' ,function($scope,$controller   ,itemCatServic
 		if ($scope.grade==1){ //1级
 			$scope.entity_1=null;
 			$scope.entity_2=null;
+			$scope.parentId=0;
 		}
 		if ($scope.grade==2){//2级
 			$scope.entity_1=p_entity;
 			$scope.entity_2=null;
+			$scope.parentId=p_entity.id;
 		}
 		if ($scope.grade==3){//3级
 			$scope.entity_2=p_entity;
+			$scope.parentId=p_entity.id;
 		}
 		$scope.findByParentId(p_entity.id);//查询列表
 	}
